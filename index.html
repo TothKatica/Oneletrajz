@@ -1,144 +1,191 @@
 <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tóth Katalin Enikő gazdaságinformatikus hallgató online önéletrajza.">
+  <title>Tóth Katalin Enikő – Önéletrajz</title>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    html, body, h1, h2, h3, h4, h5, h6 { font-family: "Roboto", sans-serif; }
+    body { color: #292929; }
+    .burgundy { color: #800020; }
+    .bg-burgundy { background-color: #800020; color: white; }
+    .cv-card { border-top: 3px solid #800020; }
+    .cv-photo { display: block; width: 100%; max-height: 220px; object-fit: cover; }
+    .cv-title { margin: 0; font-size: 26px; font-weight: 700; }
+    .cv-subtitle { margin: 5px 0 14px; color: #800020; font-size: 15px; }
+    .contact p { margin: 10px 0; overflow-wrap: anywhere; }
+    .contact a, .external-link { color: #800020; text-decoration: underline; text-underline-offset: 3px; }
+    .skill { display: inline-block; margin: 0 5px 7px 0; padding: 5px 9px;
+             border-radius: 5px; background: #f6e8ec; color: #600018; font-size: 13px; }
+    .academic-group { margin: 15px 0 18px 3px; padding-left: 14px; border-left: 3px solid #800020; }
+    .academic-group h4 { margin: 0 0 5px; color: #800020; font-size: 14px; font-weight: 700; }
+    .academic-group ul { margin: 0; padding-left: 19px; font-size: 13px; }
+    .academic-group li { padding: 3px 0; }
+    .section-title { padding-bottom: 6px; border-bottom: 1px solid #ededed; }
+    .section-content { margin-bottom: 18px; }
+    .date { color: #800020; font-size: 14px; }
+    .muted { color: #616161; }
+    .justified { text-align: justify; hyphens: auto; overflow-wrap: break-word; }
+    .cv-footer { margin-top: 12px; padding: 18px 0; }
+
+    @media print {
+      @page { size: A4; margin: 11mm; }
+      body { background: white !important; font-size: 12px; }
+      .w3-content { max-width: none !important; margin: 0 !important; }
+      .w3-card, .w3-card-4 { box-shadow: none !important; }
+      .cv-footer { display: none; }
+    }
+  </style>
+</head>
 <body class="w3-light-grey">
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <main class="w3-content w3-margin-top" style="max-width:1200px;">
+    <div class="w3-row-padding">
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="/w3images/avatar_hat.jpg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Jane Doe</h2>
-          </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
-          <hr>
+      <!-- Bal oldal: személyes adatok, készségek, nyelvek -->
+      <aside class="w3-third">
+        <div class="w3-white w3-card-4 cv-card">
+          <img class="cv-photo" src="profil.png" alt="Tóth Katalin Enikő portréfotója">
+          <div class="w3-container w3-padding-16">
+            <h1 class="cv-title">Tóth Katalin Enikő</h1>
+            <p class="cv-subtitle">Gazdaságinformatikus hallgató</p>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Adobe Photoshop</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
-          </div>
-          <p>Photography</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
+            <div class="contact w3-text-grey">
+              <p><i class="fa fa-map-marker fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i>Szeged, Magyarország</p>
+              <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i><a href="https://spamty.eu/show/v7/422/6219dd6a7c/" target="_blank" rel="noopener noreferrer" aria-label="E-mail-cím megtekintése emberi ellenőrzés után">…@gmail.com</a></p>
+              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i>Szakmai gyakorlatot keresek</p>
             </div>
-          </div>
-          <p>Illustrator</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
-          </div>
-          <p>Media</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-          </div>
-          <br>
+            <hr>
 
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-          </div>
-          <p>Spanish</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
-          </div>
-          <p>German</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
-          </div>
-          <br>
-        </div>
-      </div><br>
+            <p class="w3-large"><b><i class="fa fa-star fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Készségek</b></p>
+            <div aria-label="Készségek">
+              <span class="skill">Kommunikáció</span>
+              <span class="skill">Szervezőképesség</span>
+              <span class="skill">Kreatív problémamegoldás</span>
+              <span class="skill">Csapatmunka</span>
+              <span class="skill">Céltudatosság</span>
+              <span class="skill">Kitartás</span>
+            </div>
+            <hr>
 
-    <!-- End Left Column -->
-    </div>
+            <p class="w3-large"><b><i class="fa fa-check-circle fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Kiemelt egyetemi tantárgyak</b></p>
+            <div class="academic-group">
+              <h4>Üzleti és menedzsmentismeretek</h4>
+              <ul>
+                <li><a class="external-link" href="https://hsup.niu.hu/" target="_blank" rel="noopener noreferrer">Hungarian Startup University Program</a></li>
+                <li>Számvitel</li>
+                <li>Termelésmenedzsment</li>
+                <li>Döntési rendszerek</li>
+                <li>Gazdasági informatika</li>
+              </ul>
+            </div>
+            <div class="academic-group">
+              <h4>Informatika és szoftverfejlesztés</h4>
+              <ul>
+                <li>Programozás alapjai (C)</li>
+                <li>Programozás I. (Java)</li>
+                <li>Adatbázisok</li>
+                <li>Algoritmusok és adatszerkezetek</li>
+                <li>Mobilalkalmazás-fejlesztés</li>
+                <li>Rendszerfejlesztés</li>
+                <li>Információbiztonság</li>
+                <li>UI/UX Design</li>
+              </ul>
+            </div>
+            <hr>
 
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
-          <hr>
+            <p class="w3-large"><b><i class="fa fa-globe fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Nyelvtudás</b></p>
+            <p>Magyar</p>
+            <div class="w3-light-grey w3-round-xlarge">
+              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:100%;">Anyanyelv</div>
+            </div>
+            <p>Angol</p>
+            <div class="w3-light-grey w3-round-xlarge">
+              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:60%;">B2</div>
+            </div>
+            <p>Latin</p>
+            <div class="w3-light-grey w3-round-xlarge">
+              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:30%;">A2</div>
+            </div>
+            <p>Kínai</p>
+            <div class="w3-light-grey w3-round-xlarge">
+              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:15%;">A1</div>
+            </div>
+            <br>
+          </div>
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
-        </div>
+      </aside>
+
+      <!-- Jobb oldal: bemutatkozás, tanulmányok, projektek és eredmények -->
+      <div class="w3-twothird">
+        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Profil</h2>
+          <div class="w3-container section-content">
+            <p class="justified">Célom, hogy a technológia segítségével maradandót alkossak, és olyan ötleteket valósítsak meg, amelyeknek valódi értéke van. Kreatív gondolkodásomnak köszönhetően gyakran más szemszögből közelítem meg a problémákat, és szívesen keresek új megoldásokat. Erősségem a kommunikáció, a szervezőkészség és a közös munka. Különösen azok a feladatok motiválnak, ahol az ötletek kidolgozásában és megvalósításában is aktív szerepet vállalhatok.</p>
+          </div>
+        </section>
+
+        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Tanulmányok</h2>
+          <div class="w3-container section-content">
+            <h4><b><a class="external-link" href="https://u-szeged.hu/" target="_blank" rel="noopener noreferrer">Szegedi Tudományegyetem</a></b></h4>
+            <h5><a class="external-link" href="https://www.inf.u-szeged.hu/felvetelizoknek/szakok/gazdasaginformatikus-bsc" target="_blank" rel="noopener noreferrer">Gazdaságinformatikus, BSc</a></h5>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2023 – jelenleg</h6>
+            <hr>
+            <h4><b><a class="external-link" href="https://u-szeged.hu/gyakorlo/gimnazium" target="_blank" rel="noopener noreferrer">SZTE Báthory István Gyakorló Gimnázium</a></b></h4>
+            <h5>Műszaki informatika</h5>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2019 – 2023</h6>
+            <hr>
+            <h4><b>Tehetséggondozó Program</b></h4>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2022 – 2026</h6>
+          </div>
+        </section>
+
+        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Tanulmányi projekt</h2>
+          <div class="w3-container section-content">
+            <h4><b>Egyetemi Eseményszervező Platform</b></h4>
+            <p class="muted"><a class="external-link" href="https://www.figma.com/design/jPvQE6rKy61hH3KKcMdoZ1/Szakdolgozat?node-id=0-1&amp;t=x6zI76QbavfatdyS-1" target="_blank" rel="noopener noreferrer">Szakdolgozati projekt</a> | Mobilalkalmazás fejlesztése</p>
+            <p class="justified">Olyan mobilalkalmazáson dolgozom, amely az egyetemisták számára megkönnyíti a közös programok és személyes találkozások szervezését. Projektem célja, hogy segítsem a hallgatók egyetemi közösségi életbe való bekapcsolódását valamint, hogy lehetőséget, fórumot teremtsek a hallgatók között új kapcsolatok kialakítására.</p>
+            <p class="muted">Szakdolgozat készítése I. – jeles (5).</p>
+          </div>
+        </section>
+
+        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Munkatapasztalat</h2>
+          <div class="w3-container section-content">
+            <h4><b><a class="external-link" href="https://www.campleaders.com/hu" target="_blank" rel="noopener noreferrer">Camp Leaders-Amerika</a> – háttértámogató munkatárs, gyermektábor</b></h4>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2025. június – augusztus</h6>
+            <ul>
+              <li>Háttérfeladatok ellátása a tábor napi működésének támogatására: konyhai munka, mosoda és takarítás.</li>
+              <li>Együttműködés nemzetközi csapatban, a különböző munkaterületek feladataihoz alkalmazkodva.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Versenyeredmények</h2>
+          <div class="w3-container section-content">
+            <h4><b><a class="external-link" href="https://www.youtube.com/watch?v=bbDGo6G56Z8" target="_blank" rel="noopener noreferrer">Akrobatikus torna</a></b></h4>
+            <ul>
+              <li>2015 – Országos bajnoki cím</li>
+              <li>2016 – Nemzetközi bajnokság, Portugália</li>
+              <li>2018 – Országos bajnoki cím</li>
+            </ul>
+          </div>
+        </section>
       </div>
-
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>W3Schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
-          <p>Web Development! All I need to know in one place</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>London Business School</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
-          <p>Master Degree</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>School of Coding</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
-          <p>Bachelor Degree</p><br>
-        </div>
-      </div>
-
-    <!-- End Right Column -->
     </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
+  </main>
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
-
+  <footer class="w3-container bg-burgundy w3-center cv-footer">
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer">w3.css</a></p>
+  </footer>
 </body>
 </html>
