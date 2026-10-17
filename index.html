@@ -23,6 +23,32 @@
     .contact a, .external-link { color: #800020; text-decoration: underline; text-underline-offset: 3px; }
     .skill { display: inline-block; margin: 0 5px 7px 0; padding: 5px 9px;
              border-radius: 5px; background: #f6e8ec; color: #600018; font-size: 13px; }
+
+    /* Interaktív készségek: példák egérrel, érintéssel és billentyűzettel. */
+    .skills-hint { margin: 0 0 10px; color: #777; font-size: 12px; line-height: 1.45; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 7px; align-items: flex-start; }
+    .skill-entry { display: inline-flex; }
+    .skill-trigger { margin: 0; border: 1px solid transparent; font-family: inherit;
+                     line-height: 1.45; text-align: left; cursor: pointer;
+                     transition: background-color .15s, border-color .15s; }
+    .skill-trigger:hover, .skill-trigger[aria-expanded="true"] {
+      background: #efd6dd; border-color: #dcbbc5;
+    }
+    .skill-trigger:focus-visible { outline: 2px solid #800020; outline-offset: 2px; }
+    .skill-info { display: inline-grid; place-items: center; width: 14px; height: 14px;
+                  margin-left: 5px; border: 1px solid #ba8b99; border-radius: 50%;
+                  font-size: 10px; line-height: 1; font-style: normal; font-weight: 700; }
+    .skill-tooltip { position: fixed; z-index: 1200; box-sizing: border-box;
+                     width: 310px; max-width: calc(100vw - 24px);
+                     max-height: calc(100vh - 24px); overflow-y: auto;
+                     padding: 12px 14px; background: #fff; color: #292929;
+                     border: 1px solid #e4c9d1; border-left: 3px solid #800020;
+                     border-radius: 9px; box-shadow: 0 8px 24px rgba(0,0,0,.17);
+                     font-size: 13px; line-height: 1.55; text-align: left; }
+    .skill-tooltip[hidden] { display: none !important; }
+    .skill-tooltip-label { display: block; margin-bottom: 4px;
+                           color: #800020; font-size: 12px; font-weight: 700; }
+    .skill-tooltip p { margin: 0; }
     .academic-group { margin: 15px 0 18px 3px; padding-left: 14px; border-left: 3px solid #800020; }
     .academic-group h4 { margin: 0 0 5px; color: #800020; font-size: 14px; font-weight: 700; }
     .academic-group ul { margin: 0; padding-left: 19px; font-size: 13px; }
@@ -33,6 +59,15 @@
     .muted { color: #616161; }
     .justified { text-align: justify; hyphens: auto; overflow-wrap: break-word; }
     .cv-footer { margin-top: 12px; padding: 18px 0; }
+
+    /* Mobilon a bemutatkozó Profil kártya közvetlenül a profilkép alá kerül. */
+    @media screen and (max-width: 600px) {
+      #profile-section.profile-in-mobile {
+        margin: 12px 12px 6px !important;
+        border-radius: 6px;
+        box-shadow: none !important;
+      }
+    }
 
     /* HU / EN nyelvváltó */
     .language-switcher { display: flex; justify-content: flex-end; gap: 6px;
@@ -45,7 +80,8 @@
     .language-switcher button:focus-visible { outline: 2px solid #800020; outline-offset: 3px; }
 
     @media print {
-    .language-switcher { display: none !important; }
+    .language-switcher, .skills-hint, .skill-info, .skill-tooltip { display: none !important; }
+    .skill-trigger { background: #f6e8ec !important; border: 0 !important; }
       @page { size: A4; margin: 11mm; }
       body { background: white !important; font-size: 12px; }
       .w3-content { max-width: none !important; margin: 0 !important; }
@@ -81,13 +117,62 @@
             <hr>
 
             <p class="w3-large"><b><i class="fa fa-star fa-fw w3-margin-right burgundy" aria-hidden="true"></i><span data-i18n="skills">Készségek</span></b></p>
-            <div aria-label="Készségek">
-              <span class="skill"><span data-i18n="communication">Kommunikáció</span></span>
-              <span class="skill"><span data-i18n="organization">Szervezőképesség</span></span>
-              <span class="skill"><span data-i18n="creativity">Kreatív problémamegoldás</span></span>
-              <span class="skill"><span data-i18n="teamwork">Csapatmunka</span></span>
-              <span class="skill"><span data-i18n="goalOrientation">Céltudatosság</span></span>
-              <span class="skill"><span data-i18n="perseverance">Kitartás</span></span>
+            <p class="skills-hint"><span data-i18n="skillsHint">Kattints egy készségre a gyakorlati példáért.</span></p>
+            <div class="skill-list" aria-label="Készségek">
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-communication">
+                  <span data-i18n="communication">Kommunikáció</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-communication" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="exampleCommunication">A Camp Leaders programban nemzetközi csapatban dolgoztam, ahol a mindennapi feladatok során angolul kommunikáltam a kollégáimmal.</p>
+                </div>
+              </div>
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-organization">
+                  <span data-i18n="organization">Szervezőképesség</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-organization" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="exampleOrganization">Amikor az osztálytalálkozónk szervezését senki nem kezdte el, magamra vállaltam a feladatot, és megszerveztem az eseményt.</p>
+                </div>
+              </div>
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-creativity">
+                  <span data-i18n="creativity">Kreatív problémamegoldás</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-creativity" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="exampleCreativity">A szakdolgozatom alapötletét még a fejlesztés előtt valós helyzetben teszteltem: azt vizsgáltam, hogyan lehet egy közös programmal közelebb hozni egymáshoz az egymást még nem ismerő egyetemistákat.</p>
+                </div>
+              </div>
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-teamwork">
+                  <span data-i18n="teamwork">Csapatmunka</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-teamwork" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="exampleTeamwork">A Camp Leaders során különböző munkaterületeken dolgoztam nemzetközi kollégákkal, alkalmazkodva a csapat napi feladataihoz.</p>
+                </div>
+              </div>
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-goalOrientation">
+                  <span data-i18n="goalOrientation">Céltudatosság</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-goalOrientation" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="exampleGoalOrientation">A szakdolgozatomhoz saját alkalmazásötletet választottam, amelyet a kezdeti koncepciótól a tervezésen át a megvalósítás felé viszek.</p>
+                </div>
+              </div>
+              <div class="skill-entry">
+                <button class="skill skill-trigger" type="button" aria-expanded="false" aria-controls="skill-perseverance">
+                  <span data-i18n="perseverance">Kitartás</span><i class="skill-info" aria-hidden="true">i</i>
+                </button>
+                <div class="skill-tooltip" id="skill-perseverance" role="tooltip" hidden>
+                  <strong class="skill-tooltip-label" data-i18n="exampleLabel">Példa a gyakorlatból</strong>
+                  <p data-i18n="examplePerseverance">Több éven át versenyszerű akrobatikus tornával foglalkoztam. 2015-ben és 2018-ban országos bajnoki címet szereztem, 2016-ban pedig nemzetközi versenyen vettem részt.</p>
+                </div>
+              </div>
             </div>
             <hr>
 
@@ -141,7 +226,7 @@
 
       <!-- Jobb oldal: bemutatkozás, tanulmányok, projektek és eredmények -->
       <div class="w3-twothird">
-        <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
+        <section id="profile-section" class="w3-container w3-card w3-white w3-margin-bottom cv-card">
           <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="aboutTitle">Profil</span></h2>
           <div class="w3-container section-content">
             <p class="justified"><span data-i18n="aboutText">Célom, hogy a technológia segítségével maradandót alkossak, és olyan ötleteket valósítsak meg, amelyeknek valódi értéke van. Kreatív gondolkodásomnak köszönhetően gyakran más szemszögből közelítem meg a problémákat, és szívesen keresek új megoldásokat. Erősségem a kommunikáció, a szervezőkészség és a közös munka. Különösen azok a feladatok motiválnak, ahol az ötletek kidolgozásában és megvalósításában is aktív szerepet vállalhatok.</span></p>
@@ -212,6 +297,14 @@
       "city": "Szeged, Hungary",
       "internship": "Seeking an internship",
       "skills": "Skills",
+      "skillsHint": "Select a skill to see a real-life example.",
+      "exampleLabel": "Real-life example",
+      "exampleCommunication": "During the Camp Leaders program, I worked in an international team and communicated with colleagues in English as part of our daily tasks.",
+      "exampleOrganization": "When no one had started planning our class reunion, I took the initiative and organized the event myself.",
+      "exampleCreativity": "Before developing my thesis project, I tested its core idea in a real university setting, exploring how a shared activity could help students who did not yet know each other connect.",
+      "exampleTeamwork": "At Camp Leaders, I worked alongside international colleagues across different operational areas and adapted to the team’s day-to-day needs.",
+      "exampleGoalOrientation": "I chose my own app concept for my thesis and have been taking it from an initial idea through planning toward implementation.",
+      "examplePerseverance": "I competed in acrobatic gymnastics for several years. I won Hungarian national championship titles in 2015 and 2018 and competed internationally in 2016.",
       "communication": "Communication",
       "organization": "Organizational skills",
       "creativity": "Creative problem-solving",
@@ -274,6 +367,9 @@
     const enButton = document.getElementById('lang-en');
     const languageMenu = document.querySelector('.language-switcher');
     const campLink = document.querySelector('[data-href-hu][data-href-en]');
+    const skillItems = Array.from(document.querySelectorAll('.skill-entry'));
+    let activeSkill = null;
+    let pinnedSkill = null;
 
     function setLanguage(lang) {
       const isEnglish = lang === 'en';
@@ -297,6 +393,7 @@
       document.querySelector('[aria-label="Készségek"], [aria-label="Skills"]')
         .setAttribute('aria-label', isEnglish ? 'Skills' : 'Készségek');
       campLink.href = isEnglish ? campLink.dataset.hrefEn : campLink.dataset.hrefHu;
+      if (activeSkill) positionSkillTooltip(activeSkill);
       huButton.setAttribute('aria-pressed', String(!isEnglish));
       enButton.setAttribute('aria-pressed', String(isEnglish));
 
@@ -310,7 +407,122 @@
     try {
       if (localStorage.getItem('cv-language') === 'en') initialLanguage = 'en';
     } catch (error) { /* Helyi megnyitáskor nem mindenhol elérhető. */ }
+
+    // Egy készségre kattintva a buborék nyitva marad; új kattintásra bezárul.
+    // Egérrel rámutatva, illetve billentyűzettel fókuszálva is megjelenik.
+    function hideSkill(item) {
+      if (!item) return;
+      item.querySelector('.skill-tooltip').hidden = true;
+      item.querySelector('.skill-trigger').setAttribute('aria-expanded', 'false');
+      if (activeSkill === item) activeSkill = null;
+    }
+
+    function positionSkillTooltip(item) {
+      const button = item.querySelector('.skill-trigger');
+      const tip = item.querySelector('.skill-tooltip');
+      const rect = button.getBoundingClientRect();
+      const width = tip.offsetWidth;
+      const height = tip.offsetHeight;
+      const left = Math.max(12, Math.min(rect.left + rect.width / 2 - width / 2,
+                                           window.innerWidth - width - 12));
+      const below = rect.bottom + 9;
+      const above = rect.top - height - 9;
+      const top = below + height <= window.innerHeight - 12
+        ? below
+        : above >= 12 ? above : Math.max(12, window.innerHeight - height - 12);
+      tip.style.left = Math.round(left) + 'px';
+      tip.style.top = Math.round(top) + 'px';
+    }
+
+    function showSkill(item) {
+      if (activeSkill && activeSkill !== item) hideSkill(activeSkill);
+      item.querySelector('.skill-tooltip').hidden = false;
+      item.querySelector('.skill-trigger').setAttribute('aria-expanded', 'true');
+      activeSkill = item;
+      positionSkillTooltip(item);
+    }
+
+    skillItems.forEach(item => {
+      const button = item.querySelector('.skill-trigger');
+      item.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse' && !pinnedSkill) showSkill(item);
+      });
+      item.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse' && !pinnedSkill) hideSkill(item);
+      });
+      button.addEventListener('focus', () => {
+        if (!pinnedSkill) showSkill(item);
+      });
+      button.addEventListener('blur', () => {
+        if (!pinnedSkill) hideSkill(item);
+      });
+      button.addEventListener('click', () => {
+        if (pinnedSkill === item) {
+          pinnedSkill = null;
+          hideSkill(item);
+        } else {
+          pinnedSkill = item;
+          showSkill(item);
+        }
+      });
+    });
+
+    document.addEventListener('pointerdown', event => {
+      if (pinnedSkill && !event.target.closest('.skill-entry')) {
+        hideSkill(pinnedSkill);
+        pinnedSkill = null;
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && activeSkill) {
+        hideSkill(activeSkill);
+        pinnedSkill = null;
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (activeSkill) positionSkillTooltip(activeSkill);
+    });
+    window.addEventListener('scroll', () => {
+      if (activeSkill) {
+        if (pinnedSkill) positionSkillTooltip(activeSkill);
+        else hideSkill(activeSkill);
+      }
+    }, { passive: true });
+
+    // Mobilon a Profil a kép után, asztali nézetben a jobb oldali oszlop elején látható.
+    const profileSection = document.getElementById('profile-section');
+    const profilePhoto = document.querySelector('.cv-photo');
+    const rightColumn = document.querySelector('.w3-twothird');
+    const mobileLayout = window.matchMedia('(max-width: 600px)');
+
+    function positionProfile() {
+      if (mobileLayout.matches) {
+        if (profilePhoto.nextElementSibling !== profileSection) {
+          profilePhoto.insertAdjacentElement('afterend', profileSection);
+        }
+        profileSection.classList.add('profile-in-mobile');
+      } else {
+        if (rightColumn.firstElementChild !== profileSection) {
+          rightColumn.prepend(profileSection);
+        }
+        profileSection.classList.remove('profile-in-mobile');
+      }
+    }
+
+    if (mobileLayout.addEventListener) {
+      mobileLayout.addEventListener('change', positionProfile);
+    } else {
+      mobileLayout.addListener(positionProfile);
+    }
+
+    window.addEventListener('beforeprint', () => {
+      rightColumn.prepend(profileSection);
+      profileSection.classList.remove('profile-in-mobile');
+    });
+    window.addEventListener('afterprint', positionProfile);
+
     setLanguage(initialLanguage);
+    positionProfile();
   </script>
 </body>
 </html>
