@@ -34,7 +34,18 @@
     .justified { text-align: justify; hyphens: auto; overflow-wrap: break-word; }
     .cv-footer { margin-top: 12px; padding: 18px 0; }
 
+    /* HU / EN nyelvváltó */
+    .language-switcher { display: flex; justify-content: flex-end; gap: 6px;
+                         max-width: 1200px; margin: 10px auto 0; padding: 0 16px;
+                         position: sticky; top: 8px; z-index: 10; }
+    .language-switcher button { padding: 7px 14px; border: 1px solid #800020;
+                                border-radius: 6px; background: white; color: #800020;
+                                font: 700 13px Roboto, sans-serif; cursor: pointer; }
+    .language-switcher button[aria-pressed="true"] { background: #800020; color: white; }
+    .language-switcher button:focus-visible { outline: 2px solid #800020; outline-offset: 3px; }
+
     @media print {
+    .language-switcher { display: none !important; }
       @page { size: A4; margin: 11mm; }
       body { background: white !important; font-size: 12px; }
       .w3-content { max-width: none !important; margin: 0 !important; }
@@ -45,6 +56,12 @@
 </head>
 <body class="w3-light-grey">
 
+  <!-- A fordítás a jobb felső két gombbal kapcsolható be. -->
+  <nav class="language-switcher" aria-label="Nyelvválasztás">
+    <button type="button" id="lang-hu" lang="hu" aria-pressed="true">HU</button>
+    <button type="button" id="lang-en" lang="en" aria-pressed="false">EN</button>
+  </nav>
+
   <main class="w3-content w3-margin-top" style="max-width:1200px;">
     <div class="w3-row-padding">
 
@@ -54,66 +71,66 @@
           <img class="cv-photo" src="profil.png" alt="Tóth Katalin Enikő portréfotója">
           <div class="w3-container w3-padding-16">
             <h1 class="cv-title">Tóth Katalin Enikő</h1>
-            <p class="cv-subtitle">Gazdaságinformatikus hallgató</p>
+            <p class="cv-subtitle"><span data-i18n="subtitle">Gazdaságinformatikus hallgató</span></p>
 
             <div class="contact w3-text-grey">
-              <p><i class="fa fa-map-marker fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i>Szeged, Magyarország</p>
+              <p><i class="fa fa-map-marker fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i><span data-i18n="city">Szeged, Magyarország</span></p>
               <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i><a href="https://spamty.eu/show/v7/422/6219dd6a7c/" target="_blank" rel="noopener noreferrer" aria-label="E-mail-cím megtekintése emberi ellenőrzés után">…@gmail.com</a></p>
-              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i>Szakmai gyakorlatot keresek</p>
+              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large burgundy" aria-hidden="true"></i><span data-i18n="internship">Szakmai gyakorlatot keresek</span></p>
             </div>
             <hr>
 
-            <p class="w3-large"><b><i class="fa fa-star fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Készségek</b></p>
+            <p class="w3-large"><b><i class="fa fa-star fa-fw w3-margin-right burgundy" aria-hidden="true"></i><span data-i18n="skills">Készségek</span></b></p>
             <div aria-label="Készségek">
-              <span class="skill">Kommunikáció</span>
-              <span class="skill">Szervezőképesség</span>
-              <span class="skill">Kreatív problémamegoldás</span>
-              <span class="skill">Csapatmunka</span>
-              <span class="skill">Céltudatosság</span>
-              <span class="skill">Kitartás</span>
+              <span class="skill"><span data-i18n="communication">Kommunikáció</span></span>
+              <span class="skill"><span data-i18n="organization">Szervezőképesség</span></span>
+              <span class="skill"><span data-i18n="creativity">Kreatív problémamegoldás</span></span>
+              <span class="skill"><span data-i18n="teamwork">Csapatmunka</span></span>
+              <span class="skill"><span data-i18n="goalOrientation">Céltudatosság</span></span>
+              <span class="skill"><span data-i18n="perseverance">Kitartás</span></span>
             </div>
             <hr>
 
-            <p class="w3-large"><b><i class="fa fa-check-circle fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Kiemelt egyetemi tantárgyak</b></p>
+            <p class="w3-large"><b><i class="fa fa-check-circle fa-fw w3-margin-right burgundy" aria-hidden="true"></i><span data-i18n="excellentCourses">Kiemelt egyetemi tantárgyak</span></b></p>
             <div class="academic-group">
-              <h4>Üzleti és menedzsmentismeretek</h4>
+              <h4><span data-i18n="management">Üzleti és menedzsmentismeretek</span></h4>
               <ul>
-                <li><a class="external-link" href="https://hsup.niu.hu/" target="_blank" rel="noopener noreferrer">Hungarian Startup University Program</a></li>
-                <li>Számvitel</li>
-                <li>Termelésmenedzsment</li>
-                <li>Döntési rendszerek</li>
-                <li>Gazdasági informatika</li>
+                <li><a class="external-link" href="https://hsup.niu.hu/" target="_blank" rel="noopener noreferrer"><span data-i18n="hsup">Hungarian Startup University Program</span></a></li>
+                <li><span data-i18n="accounting">Számvitel</span></li>
+                <li><span data-i18n="production">Termelésmenedzsment</span></li>
+                <li><span data-i18n="decision">Döntési rendszerek</span></li>
+                <li><span data-i18n="businessInformatics">Gazdasági informatika</span></li>
               </ul>
             </div>
             <div class="academic-group">
-              <h4>Informatika és szoftverfejlesztés</h4>
+              <h4><span data-i18n="digital">Informatika és szoftverfejlesztés</span></h4>
               <ul>
-                <li>Programozás alapjai (C)</li>
-                <li>Programozás I. (Java)</li>
-                <li>Adatbázisok</li>
-                <li>Algoritmusok és adatszerkezetek</li>
-                <li>Mobilalkalmazás-fejlesztés</li>
-                <li>Rendszerfejlesztés</li>
-                <li>Információbiztonság</li>
-                <li>UI/UX Design</li>
+                <li><span data-i18n="cProgramming">Programozás alapjai (C)</span></li>
+                <li><span data-i18n="javaProgramming">Programozás I. (Java)</span></li>
+                <li><span data-i18n="databases">Adatbázisok</span></li>
+                <li><span data-i18n="algorithms">Algoritmusok és adatszerkezetek</span></li>
+                <li><span data-i18n="mobile">Mobilalkalmazás-fejlesztés</span></li>
+                <li><span data-i18n="systemsTwo">Rendszerfejlesztés</span></li>
+                <li><span data-i18n="security">Információbiztonság</span></li>
+                <li><span data-i18n="uiux">UI/UX Design</span></li>
               </ul>
             </div>
             <hr>
 
-            <p class="w3-large"><b><i class="fa fa-globe fa-fw w3-margin-right burgundy" aria-hidden="true"></i>Nyelvtudás</b></p>
-            <p>Magyar</p>
+            <p class="w3-large"><b><i class="fa fa-globe fa-fw w3-margin-right burgundy" aria-hidden="true"></i><span data-i18n="languages">Nyelvtudás</span></b></p>
+            <p><span data-i18n="hungarian">Magyar</span></p>
             <div class="w3-light-grey w3-round-xlarge">
-              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:100%;">Anyanyelv</div>
+              <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:100%;"><span data-i18n="native">Anyanyelv</span></div>
             </div>
-            <p>Angol</p>
+            <p><span data-i18n="english">Angol</span></p>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:60%;">B2</div>
             </div>
-            <p>Latin</p>
+            <p><span data-i18n="latin">Latin</span></p>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:30%;">A2</div>
             </div>
-            <p>Kínai</p>
+            <p><span data-i18n="chinese">Kínai</span></p>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-container w3-center w3-round-xlarge bg-burgundy" style="height:24px;width:15%;">A1</div>
             </div>
@@ -125,58 +142,58 @@
       <!-- Jobb oldal: bemutatkozás, tanulmányok, projektek és eredmények -->
       <div class="w3-twothird">
         <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
-          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Profil</h2>
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="aboutTitle">Profil</span></h2>
           <div class="w3-container section-content">
-            <p class="justified">Célom, hogy a technológia segítségével maradandót alkossak, és olyan ötleteket valósítsak meg, amelyeknek valódi értéke van. Kreatív gondolkodásomnak köszönhetően gyakran más szemszögből közelítem meg a problémákat, és szívesen keresek új megoldásokat. Erősségem a kommunikáció, a szervezőkészség és a közös munka. Különösen azok a feladatok motiválnak, ahol az ötletek kidolgozásában és megvalósításában is aktív szerepet vállalhatok.</p>
+            <p class="justified"><span data-i18n="aboutText">Célom, hogy a technológia segítségével maradandót alkossak, és olyan ötleteket valósítsak meg, amelyeknek valódi értéke van. Kreatív gondolkodásomnak köszönhetően gyakran más szemszögből közelítem meg a problémákat, és szívesen keresek új megoldásokat. Erősségem a kommunikáció, a szervezőkészség és a közös munka. Különösen azok a feladatok motiválnak, ahol az ötletek kidolgozásában és megvalósításában is aktív szerepet vállalhatok.</span></p>
           </div>
         </section>
 
         <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
-          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Tanulmányok</h2>
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="educationTitle">Tanulmányok</span></h2>
           <div class="w3-container section-content">
-            <h4><b><a class="external-link" href="https://u-szeged.hu/" target="_blank" rel="noopener noreferrer">Szegedi Tudományegyetem</a></b></h4>
-            <h5><a class="external-link" href="https://www.inf.u-szeged.hu/felvetelizoknek/szakok/gazdasaginformatikus-bsc" target="_blank" rel="noopener noreferrer">Gazdaságinformatikus, BSc</a></h5>
-            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2023 – jelenleg</h6>
+            <h4><b><a class="external-link" href="https://u-szeged.hu/" target="_blank" rel="noopener noreferrer"><span data-i18n="university">Szegedi Tudományegyetem</span></a></b></h4>
+            <h5><a class="external-link" href="https://www.inf.u-szeged.hu/felvetelizoknek/szakok/gazdasaginformatikus-bsc" target="_blank" rel="noopener noreferrer"><span data-i18n="degree">Gazdaságinformatikus, BSc</span></a></h5>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i><span data-i18n="currently">2023 – jelenleg</span></h6>
             <hr>
-            <h4><b><a class="external-link" href="https://u-szeged.hu/gyakorlo/gimnazium" target="_blank" rel="noopener noreferrer">SZTE Báthory István Gyakorló Gimnázium</a></b></h4>
-            <h5>Műszaki informatika</h5>
+            <h4><b><a class="external-link" href="https://u-szeged.hu/gyakorlo/gimnazium" target="_blank" rel="noopener noreferrer"><span data-i18n="secondary">SZTE Báthory István Gyakorló Gimnázium</span></a></b></h4>
+            <h5><span data-i18n="techIT">Műszaki informatika</span></h5>
             <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2019 – 2023</h6>
             <hr>
-            <h4><b>Tehetséggondozó Program</b></h4>
+            <h4><b><span data-i18n="college">Tehetséggondozó Program</span></b></h4>
             <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2022 – 2026</h6>
           </div>
         </section>
 
         <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
-          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Tanulmányi projekt</h2>
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="projectTitle">Tanulmányi projekt</span></h2>
           <div class="w3-container section-content">
-            <h4><b>Egyetemi Eseményszervező Platform</b></h4>
-            <p class="muted"><a class="external-link" href="https://www.figma.com/design/jPvQE6rKy61hH3KKcMdoZ1/Szakdolgozat?node-id=0-1&amp;t=x6zI76QbavfatdyS-1" target="_blank" rel="noopener noreferrer">Szakdolgozati projekt</a> | Mobilalkalmazás fejlesztése</p>
-            <p class="justified">Olyan mobilalkalmazáson dolgozom, amely az egyetemisták számára megkönnyíti a közös programok és személyes találkozások szervezését. Projektem célja, hogy segítsem a hallgatók egyetemi közösségi életbe való bekapcsolódását valamint, hogy lehetőséget, fórumot teremtsek a hallgatók között új kapcsolatok kialakítására.</p>
-            <p class="muted">Szakdolgozat készítése I. – jeles (5).</p>
+            <h4><b><span data-i18n="projectName">Egyetemi Eseményszervező Platform</span></b></h4>
+            <p class="muted"><a class="external-link" href="https://www.figma.com/design/jPvQE6rKy61hH3KKcMdoZ1/Szakdolgozat?node-id=0-1&amp;t=x6zI76QbavfatdyS-1" target="_blank" rel="noopener noreferrer"><span data-i18n="thesisLink">Szakdolgozati projekt</span></a> | <span data-i18n="mobileDev">Mobilalkalmazás fejlesztése</span></p>
+            <p class="justified"><span data-i18n="projectDesc">Olyan mobilalkalmazáson dolgozom, amely az egyetemisták számára megkönnyíti a közös programok és személyes találkozások szervezését. Projektem célja, hogy segítsem a hallgatók egyetemi közösségi életbe való bekapcsolódását valamint, hogy lehetőséget, fórumot teremtsek a hallgatók között új kapcsolatok kialakítására.</span></p>
+            <p class="muted"><span data-i18n="thesisGrade">Szakdolgozat készítése I. – jeles (5).</span></p>
           </div>
         </section>
 
         <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
-          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Munkatapasztalat</h2>
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="experienceTitle">Munkatapasztalat</span></h2>
           <div class="w3-container section-content">
-            <h4><b><a class="external-link" href="https://www.campleaders.com/hu" target="_blank" rel="noopener noreferrer">Camp Leaders-Amerika</a> – háttértámogató munkatárs, gyermektábor</b></h4>
-            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i>2025. június – augusztus</h6>
+            <h4><b><a class="external-link" href="https://www.campleaders.com/hu" data-href-hu="https://www.campleaders.com/hu" data-href-en="https://www.campleaders.com/uk" target="_blank" rel="noopener noreferrer"><span data-i18n="campName">Camp Leaders-Amerika</span></a><span data-i18n="campRole"> – háttértámogató munkatárs, gyermektábor</span></b></h4>
+            <h6 class="date"><i class="fa fa-calendar fa-fw w3-margin-right" aria-hidden="true"></i><span data-i18n="campDate">2025. június – augusztus</span></h6>
             <ul>
-              <li>Háttérfeladatok ellátása a tábor napi működésének támogatására: konyhai munka, mosoda és takarítás.</li>
-              <li>Együttműködés nemzetközi csapatban, a különböző munkaterületek feladataihoz alkalmazkodva.</li>
+              <li><span data-i18n="campTaskOne">Háttérfeladatok ellátása a tábor napi működésének támogatására: konyhai munka, mosoda és takarítás.</span></li>
+              <li><span data-i18n="campTaskTwo">Együttműködés nemzetközi csapatban, a különböző munkaterületek feladataihoz alkalmazkodva.</span></li>
             </ul>
           </div>
         </section>
 
         <section class="w3-container w3-card w3-white w3-margin-bottom cv-card">
-          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i>Versenyeredmények</h2>
+          <h2 class="w3-text-grey w3-padding-16 section-title"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge burgundy" aria-hidden="true"></i><span data-i18n="awardsTitle">Versenyeredmények</span></h2>
           <div class="w3-container section-content">
-            <h4><b><a class="external-link" href="https://www.youtube.com/watch?v=bbDGo6G56Z8" target="_blank" rel="noopener noreferrer">Akrobatikus torna</a></b></h4>
+            <h4><b><a class="external-link" href="https://www.youtube.com/watch?v=bbDGo6G56Z8" target="_blank" rel="noopener noreferrer"><span data-i18n="gymnastics">Akrobatikus torna</span></a></b></h4>
             <ul>
-              <li>2015 – Országos bajnoki cím</li>
-              <li>2016 – Nemzetközi bajnokság, Portugália</li>
-              <li>2018 – Országos bajnoki cím</li>
+              <li><span data-i18n="award2015">2015 – Országos bajnoki cím</span></li>
+              <li><span data-i18n="award2016">2016 – Nemzetközi bajnokság, Portugália</span></li>
+              <li><span data-i18n="award2018">2018 – Országos bajnoki cím</span></li>
             </ul>
           </div>
         </section>
@@ -187,5 +204,113 @@
   <footer class="w3-container bg-burgundy w3-center cv-footer">
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer">w3.css</a></p>
   </footer>
+
+  <script>
+    // A magyar szövegek a HTML-ben vannak; itt csak az angol fordítások szerepelnek.
+    const english = {
+      "subtitle": "Business Informatics Student",
+      "city": "Szeged, Hungary",
+      "internship": "Seeking an internship",
+      "skills": "Skills",
+      "communication": "Communication",
+      "organization": "Organizational skills",
+      "creativity": "Creative problem-solving",
+      "teamwork": "Teamwork",
+      "goalOrientation": "Goal orientation",
+      "perseverance": "Perseverance",
+      "excellentCourses": "Selected University Courses",
+      "management": "Business and Management",
+      "hsup": "Hungarian Startup University Program",
+      "accounting": "Accounting",
+      "production": "Production Management",
+      "decision": "Decision Systems",
+      "businessInformatics": "Business Informatics",
+      "digital": "IT and Software Development",
+      "cProgramming": "Programming Fundamentals (C)",
+      "javaProgramming": "Programming I (Java)",
+      "databases": "Databases",
+      "algorithms": "Algorithms and Data Structures",
+      "mobile": "Mobile Application Development",
+      "systemsTwo": "Systems Development",
+      "security": "Information Security",
+      "uiux": "UI/UX Design",
+      "languages": "Languages",
+      "hungarian": "Hungarian",
+      "native": "Native",
+      "english": "English",
+      "latin": "Latin",
+      "chinese": "Chinese",
+      "aboutTitle": "Profile",
+      "aboutText": "My goal is to use technology to create something meaningful and bring ideas to life that deliver real value. My creative mindset allows me to approach challenges from different perspectives and explore new solutions. My strengths lie in communication, organizational skills, and teamwork. I am particularly motivated by opportunities where I can actively contribute to both developing ideas and turning them into reality.",
+      "educationTitle": "Education",
+      "university": "University of Szeged",
+      "degree": "Business Informatics, BSc",
+      "currently": "2023 – present",
+      "secondary": "SZTE Báthory István Training Secondary School",
+      "techIT": "Technical Informatics",
+      "college": "Talent Development Program",
+      "projectTitle": "Academic Project",
+      "projectName": "University Event Planning Platform",
+      "thesisLink": "Thesis project",
+      "mobileDev": "Mobile application development",
+      "projectDesc": "I am developing a mobile application that makes it easier for university students to organize group activities and in-person meetups. The goal of my project is to help students become more involved in university social life and to provide a platform where they can connect with one another, meet new people, and build meaningful relationships.",
+      "thesisGrade": "Thesis Preparation I – Excellent (5).",
+      "experienceTitle": "Work Experience",
+      "campName": "Camp Leaders",
+      "campRole": " – Camp Support Staff, Children’s Camp",
+      "campDate": "June – August 2025",
+      "campTaskOne": "Supported daily camp operations through kitchen duties, laundry and housekeeping.",
+      "campTaskTwo": "Collaborated with an international team and adapted to tasks across different operational areas.",
+      "awardsTitle": "Competition Achievements",
+      "gymnastics": "Acrobatic Gymnastics",
+      "award2015": "2015 – Hungarian National Champion",
+      "award2016": "2016 – International Championship, Portugal",
+      "award2018": "2018 – Hungarian National Champion"
+};
+
+    const localized = Array.from(document.querySelectorAll('[data-i18n]'));
+    const hungarian = new Map(localized.map(element => [element, element.textContent]));
+    const huButton = document.getElementById('lang-hu');
+    const enButton = document.getElementById('lang-en');
+    const languageMenu = document.querySelector('.language-switcher');
+    const campLink = document.querySelector('[data-href-hu][data-href-en]');
+
+    function setLanguage(lang) {
+      const isEnglish = lang === 'en';
+      localized.forEach(element => {
+        element.textContent = isEnglish ? english[element.dataset.i18n] : hungarian.get(element);
+      });
+
+      document.documentElement.lang = isEnglish ? 'en' : 'hu';
+      document.title = isEnglish ? 'Tóth Katalin Enikő – CV' : 'Tóth Katalin Enikő – Önéletrajz';
+      document.querySelector('meta[name="description"]').content = isEnglish
+        ? 'Online CV of Tóth Katalin Enikő, Business Informatics student.'
+        : 'Tóth Katalin Enikő gazdaságinformatikus hallgató online önéletrajza.';
+
+      document.querySelector('.cv-photo').alt = isEnglish
+        ? 'Portrait of Tóth Katalin Enikő'
+        : 'Tóth Katalin Enikő portréfotója';
+      document.querySelector('.contact a').setAttribute('aria-label', isEnglish
+        ? 'View email address after human verification'
+        : 'E-mail-cím megtekintése emberi ellenőrzés után');
+      languageMenu.setAttribute('aria-label', isEnglish ? 'Language selection' : 'Nyelvválasztás');
+      document.querySelector('[aria-label="Készségek"], [aria-label="Skills"]')
+        .setAttribute('aria-label', isEnglish ? 'Skills' : 'Készségek');
+      campLink.href = isEnglish ? campLink.dataset.hrefEn : campLink.dataset.hrefHu;
+      huButton.setAttribute('aria-pressed', String(!isEnglish));
+      enButton.setAttribute('aria-pressed', String(isEnglish));
+
+      try { localStorage.setItem('cv-language', lang); } catch (error) { /* Helyi megnyitáskor nem mindenhol elérhető. */ }
+    }
+
+    huButton.addEventListener('click', () => setLanguage('hu'));
+    enButton.addEventListener('click', () => setLanguage('en'));
+
+    let initialLanguage = 'hu';
+    try {
+      if (localStorage.getItem('cv-language') === 'en') initialLanguage = 'en';
+    } catch (error) { /* Helyi megnyitáskor nem mindenhol elérhető. */ }
+    setLanguage(initialLanguage);
+  </script>
 </body>
 </html>
